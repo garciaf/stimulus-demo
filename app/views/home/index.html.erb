@@ -2,7 +2,12 @@
 <div class="flex flex-col gap-5 w-full mb-12">
   <h1 class="px-1 text-center text-5xl tracking-tighter text-balance max-lg:font-medium lg:text-8xl text-white">Stimulus 101</h1>
   <h2 class="px-1 text-center text-xl tracking-tighter text-balance max-lg:font-medium lg:text-3xl text-gray-300">A simple demo to get you started</h2>
-</div>
+
+  <div class="flex flex-col items-center justify-center gap-3">
+    <%= image_tag "qr-code.png", class: "flex h-32 w-32", alt: "QR Code" %>
+    <p class="text-gray-400">Check the code on</p>
+    <%= link_to "github.com/garciaf/stimulus-demo", "https://github.com/garciaf/stimulus-demo", class: "text-green-400 hover:underline" %>
+  </div>
 
 <div class="flex flex-col gap-5 w-full mb-12 border border-gray-700 p-5 rounded-lg bg-gray-800">
   <h1 class="px-1 text-center text-3xl tracking-tighter text-balance max-lg:font-medium lg:text-6xl text-white">Type writter</h1>
@@ -35,15 +40,18 @@
 <div class="flex flex-col gap-5 w-full mb-12 border border-gray-700 p-5 rounded-lg bg-gray-800">
   <h1 class="px-1 text-center text-3xl tracking-tighter text-balance max-lg:font-medium lg:text-6xl text-white">Photoswipe</h1>
   <h2 class="px-1 text-center text-xl tracking-tighter text-balance max-lg:font-medium lg:text-3xl text-gray-300">Integrate with Photoswipe for a better image viewing experience</h2>
-  <div data-controller="photoswipe" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+  <div data-controller="photoswipe" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
     <a href="<%= asset_path("dogs/1.jpg") %>" data-width="2848" data-height="4288">
-      <%= image_tag "dogs/1.jpg", class: "w-full h-auto rounded-lg hover:scale-105 transition-transform duration-200" %>
+      <%= image_tag "dogs/1.jpg", class: "w-full h-auto rounded-lg hover:scale-105 transition-transform duration-200", alt: "Dog 1" %>
     </a>
     <a href="<%= asset_path("dogs/2.jpg") %>" data-width="4032" data-height="3024">
-      <%= image_tag "dogs/2.jpg", class: "w-full h-auto rounded-lg hover:scale-105 transition-transform duration-200" %>
+      <%= image_tag "dogs/2.jpg", class: "w-full h-auto rounded-lg hover:scale-105 transition-transform duration-200", alt: "Dog 2" %>
     </a>
     <a href="<%= asset_path("dogs/3.jpg") %>" data-width="5784" data-height="3861">
-      <%= image_tag "dogs/3.jpg", class: "w-full h-auto rounded-lg hover:scale-105 transition-transform duration-200" %>
+      <%= image_tag "dogs/3.jpg", class: "w-full h-auto rounded-lg hover:scale-105 transition-transform duration-200", alt: "Dog 3" %>
+    </a>
+    <a href="<%= asset_path("dogs/4.jpg") %>" data-width="5184" data-height="3888">
+      <%= image_tag "dogs/4.jpg", class: "w-full h-auto rounded-lg hover:scale-105 transition-transform duration-200", alt: "Dog 4" %>
     </a>
   </div>
 </div>
@@ -55,10 +63,12 @@
     <div class="flex flex-col justify-center gap-3">
       <div class="flex mb-5 grow w-full justify-center gap-3">
         <%= f.text_field :search, data: { search_target: "input" }, placeholder: "Search countries...", class: "border w-1/2 border-gray-700 bg-gray-800 text-white py-2 px-4 rounded-lg" %>
-        <%= f.submit "", class: "hidden", data: { search_target: "submit" } %>
       </div>
       <div class="flex flex-col justify-center min-h-[400px]">
-        <div class="spinner mx-auto my-20 hidden" data-reveal-target="item"></div>
+        <div class="hidden" data-reveal-target="item">
+          <div class="spinner mx-auto my-20"></div>
+          <p class="text-center text-gray-400">We are searching for countries...</p>
+        </div>
         <%= turbo_frame_tag "countries", data: { reveal_target: "item" } do %>
           <p class="text-center text-gray-400">No countries found.</p>
         <% end %>
