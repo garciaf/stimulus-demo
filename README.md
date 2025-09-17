@@ -1,24 +1,30 @@
-# README
+# Demo Stimulus Rails App
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This project is only here as teaching material. To show with very simple example how to do some very cool stimulus component and use them together.
 
-Things you may want to cover:
+## Prerequisites
 
-* Ruby version
+- Ruby (version specified in `.ruby-version`)
+- Bundler (`gem install bundler`)
+- Node.js & Yarn (`npm install -g yarn`)
+- PostgreSQL (or your configured database)
 
-* System dependencies
+## Setup & Boot
 
-* Configuration
+1. **Set up the app:**
+  ```bash
+  ./bin/setup
+  ```
 
-* Database creation
+2. **Start the development server:**
+  ```bash
+  ./bin/dev
+  ```
 
-* Database initialization
+3. **Access the app:**
+  Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-* How to run the test suite
+## Troubleshooting
 
-* Services (job queues, cache servers, search engines, etc.)
+If you encounter issues, ensure all dependencies are installed and your database is running.
 
-* Deployment instructions
-
-* ...
