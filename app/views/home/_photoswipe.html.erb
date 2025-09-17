@@ -1,0 +1,18 @@
+<div class="flex flex-col gap-5 w-full mb-12 border border-gray-700 p-5 rounded-lg bg-gray-800">
+  <h1 class="px-1 text-center text-3xl tracking-tighter text-balance max-lg:font-medium lg:text-6xl text-white">Photoswipe</h1>
+  <h2 class="px-1 text-center text-xl tracking-tighter text-balance max-lg:font-medium lg:text-3xl text-gray-300">Integrate with Photoswipe for a better image viewing experience</h2>
+  <div data-controller="photoswipe" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+    <a href="<%= asset_path("dogs/1.jpg") %>" data-width="2848" data-height="4288">
+      <%= image_tag "dogs/1.jpg", class: "w-full h-auto rounded-lg hover:scale-105 transition-transform duration-200", alt: "Dog 1" %>
+    </a>
+    <a href="<%= asset_path("dogs/2.jpg") %>" data-width="4032" data-height="3024">
+      <%= image_tag "dogs/2.jpg", class: "w-full h-auto rounded-lg hover:scale-105 transition-transform duration-200", alt: "Dog 2" %>
+    </a>
+    <a href="<%= asset_path("dogs/3.jpg") %>" data-width="5784" data-height="3861">
+      <%= image_tag "dogs/3.jpg", class: "w-full h-auto rounded-lg hover:scale-105 transition-transform duration-200", alt: "Dog 3" %>
+    </a>
+    <a href="<%= asset_path("dogs/4.jpg") %>" data-width="5184" data-height="3888">
+      <%= image_tag "dogs/4.jpg", class: "w-full h-auto rounded-lg hover:scale-105 transition-transform duration-200", alt: "Dog 4" %>
+    </a>
+  </div>
+</div>

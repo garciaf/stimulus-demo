@@ -5,6 +5,9 @@ class CountriesController < ApplicationController
   def index
     @countries = []
     @countries = client.translations(params[:search]) if params[:search].present?
+    @countries = @countries
+                  .reject { |c| c["capital"].blank? }
+                  .reject { |c| c["flags"].blank? }
   end
 
   def not_found

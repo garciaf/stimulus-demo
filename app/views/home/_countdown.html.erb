@@ -1,0 +1,15 @@
+<div class="flex flex-col gap-5 w-full mb-12 border border-gray-700 p-5 rounded-lg bg-gray-800">
+  <h1 class="px-1 text-center text-3xl tracking-tighter text-balance max-lg:font-medium lg:text-6xl text-white">Countdown</h1>
+  <h2 class="px-1 text-center text-xl tracking-tighter text-balance max-lg:font-medium lg:text-3xl text-gray-300">A simple countdown using Stimulus</h2>
+  <div data-controller="countdown reveal" data-reveal-hidden-class="hidden" class="flex flex-col gap-5 w-full" data-countdown-second-value="10" data-action="countdown:finished->reveal#show countdown:start->reveal#hide countdown:reset->reveal#hide">
+    <div class="text-center text-6xl font-mono" data-countdown-target="display">00:00:00</div>
+    <div class="flex justify-center gap-3">
+      <button data-action="click->countdown#start" class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Start</button>
+      <button data-action="click->countdown#stop" class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Stop</button>
+      <button data-action="click->countdown#reset" class="bg-gray-600 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">Reset</button>
+    </div>
+    <div data-reveal-target="item" class="hidden">
+      <%= image_tag "text_timeup.png", class: "mx-auto" %>
+    </div>
+  </div>
+</div>
