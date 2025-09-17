@@ -1,0 +1,20 @@
+
+<%= turbo_frame_tag "countries" do %>
+  <% if @countries.blank? %>
+    <p class="text-center text-gray-400">No countries found.</p>
+  <% else %>
+    <ul class="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <% @countries.each do |country| %>
+        <li class="flex flex-row items-center gap-2 bg-gray-800 p-4 rounded-lg border border-gray-700">
+          <%= image_tag(country.dig("flags", "png"), class: "h-16 object-cover") if country.dig("flags", "png").present? %>
+          <div class="flex flex-col">
+            <p class="text-white"><%= country.dig("name", "common") %></p>
+            <p class="text-gray-400"><%= country.dig("translations", "fra", "common") %></p>
+            <p class="text-gray-400"><%= country.dig("translations", "deu", "common") %></p>
+            <p class="text-gray-400"><%= country.dig("translations", "rus", "common") %></p>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+<% end %>

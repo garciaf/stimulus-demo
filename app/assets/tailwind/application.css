@@ -1,0 +1,19 @@
+@import "tailwindcss";
+
+@theme {
+   /* Fonts */
+  --font-typewriter: "Special Elite", monospace;
+
+  --font-aldrich: Aldrich, monospace;
+  --font-source-sans-3: "Source Sans 3", sans-serif;
+  /*//// Border radius ////*/
+  --radius: 10px;
+  /* Colors (adds to the default palette — don't reset --color-* if you want both) */
+  --color-teal: #33ba9e;
+  --color-blue: #3b82f6;
+  --color-purple: #7954ff;
+  --color-gray-dark: #181818;
+
+
+
+}

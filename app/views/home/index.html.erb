@@ -1,0 +1,66 @@
+
+<div class="flex flex-col gap-5 w-full mb-12">
+  <h1 class="px-1 text-center text-5xl tracking-tighter text-balance max-lg:font-medium lg:text-8xl text-white">Stimulus 101</h1>
+  <h2 class="px-1 text-center text-xl tracking-tighter text-balance max-lg:font-medium lg:text-3xl text-gray-300">A simple demo to get you started</h2>
+</div>
+
+<div class="flex flex-col gap-5 w-full mb-12 border border-gray-700 p-5 rounded-lg bg-gray-800">
+  <h1 class="px-1 text-center text-3xl tracking-tighter text-balance max-lg:font-medium lg:text-6xl text-white">Type writter</h1>
+  <h2 class="px-1 text-center text-xl tracking-tighter text-balance max-lg:font-medium lg:text-3xl text-gray-300">A simple type writter effect</h2>
+  <div data-controller="typewritter" class="flex flex-col gap-5 w-full" data-typewritter-speed-value="150">
+    <div class="flex justify-center gap-3">
+      <button data-action="click->typewritter#type" class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Type</button>
+      <button data-action="click->typewritter#reset" class="bg-gray-600 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">Reset</button>
+    </div>
+    <p class="text-center font-typewriter" data-typewritter-target="text">This is a simple type writter effect using Stimulus. You can customize the text and the speed of the typing effect. Enjoy!</p>
+  </div>
+</div>
+
+<div class="flex flex-col gap-5 w-full mb-12 border border-gray-700 p-5 rounded-lg bg-gray-800">
+  <h1 class="px-1 text-center text-3xl tracking-tighter text-balance max-lg:font-medium lg:text-6xl text-white">Countdown</h1>
+  <h2 class="px-1 text-center text-xl tracking-tighter text-balance max-lg:font-medium lg:text-3xl text-gray-300">A simple countdown using Stimulus</h2>
+  <div data-controller="countdown reveal" data-reveal-hidden-class="hidden" class="flex flex-col gap-5 w-full" data-countdown-second-value="10" data-action="countdown:finished->reveal#show countdown:start->reveal#hide countdown:reset->reveal#hide">
+    <div class="text-center text-6xl font-mono" data-countdown-target="display">00:00:00</div>
+    <div class="flex justify-center gap-3">
+      <button data-action="click->countdown#start" class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Start</button>
+      <button data-action="click->countdown#stop" class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Stop</button>
+      <button data-action="click->countdown#reset" class="bg-gray-600 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">Reset</button>
+    </div>
+    <div data-reveal-target="item" class="hidden">
+      <%= image_tag "text_timeup.png", class: "mx-auto" %>
+    </div>
+  </div>
+</div>
+
+<div class="flex flex-col gap-5 w-full mb-12 border border-gray-700 p-5 rounded-lg bg-gray-800">
+  <h1 class="px-1 text-center text-3xl tracking-tighter text-balance max-lg:font-medium lg:text-6xl text-white">Photoswipe</h1>
+  <h2 class="px-1 text-center text-xl tracking-tighter text-balance max-lg:font-medium lg:text-3xl text-gray-300">Integrate with Photoswipe for a better image viewing experience</h2>
+  <div data-controller="photoswipe" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+    <a href="<%= asset_path("dogs/1.jpg") %>" data-width="2848" data-height="4288">
+      <%= image_tag "dogs/1.jpg", class: "w-full h-auto rounded-lg hover:scale-105 transition-transform duration-200" %>
+    </a>
+    <a href="<%= asset_path("dogs/2.jpg") %>" data-width="4032" data-height="3024">
+      <%= image_tag "dogs/2.jpg", class: "w-full h-auto rounded-lg hover:scale-105 transition-transform duration-200" %>
+    </a>
+    <a href="<%= asset_path("dogs/3.jpg") %>" data-width="5784" data-height="3861">
+      <%= image_tag "dogs/3.jpg", class: "w-full h-auto rounded-lg hover:scale-105 transition-transform duration-200" %>
+    </a>
+  </div>
+</div>
+
+<div class="flex flex-col gap-5 w-full mb-12 border border-gray-700 p-5 rounded-lg bg-gray-800">
+  <h1 class="px-1 text-center text-3xl tracking-tighter text-balance max-lg:font-medium lg:text-6xl text-white">Countries</h1>
+  <h2 class="px-1 text-center text-xl tracking-tighter text-balance max-lg:font-medium lg:text-3xl text-gray-300">Fetch and display countries using an external API</h2>
+  <div class="flex flex-col justify-center gap-3">
+    <%= form_with url: countries_path, method: :get, class: "flex",  data: { controller: "search reveal", reveal_hidden_class: "hidden", action: "input->search#submit turbo:submit-start->reveal#show turbo:submit-end->reveal#hide", turbo_frame: "countries" }, class: "w-full flex justify-center" do |f| %>
+      <%= f.text_field :search, data: { search_target: "input" }, placeholder: "Search countries...", class: "border w-1/2 border-gray-700 bg-gray-800 text-white py-2 px-4 rounded-lg" %>
+      <%= f.submit "", class: "hidden", data: { search_target: "submit" } %>
+    <% end %>
+    <div class="flex flex-col justify-center min-h-[400px]">
+      <div class="spinner mx-auto my-20 hidden" data-reveal-target="item"></div>
+      <%= turbo_frame_tag "countries" do %>
+        <p class="text-center text-gray-400">No countries found.</p>
+      <% end %>
+    </div>
+  </div>
+</div>
